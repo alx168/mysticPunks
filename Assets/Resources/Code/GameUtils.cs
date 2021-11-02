@@ -16,6 +16,6 @@ public class GameUtils : MonoBehaviour
 
     public static int rand1d10()
     {
-        return Random.Range(1,10);
+        return Random.Range(1,11);
     }
 }
