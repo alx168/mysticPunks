@@ -10,6 +10,6 @@ public abstract class Spell {
     int level;
     bool targetSelf;
     int combatRounds;
-    int comabtRoundsRemaining;
+    int combatRoundsRemaining;
 }
 

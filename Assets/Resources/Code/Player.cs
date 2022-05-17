@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     public int joints = 5;
     public List<Spell> spells;
+    public List<Item> inventory;
+    
 
     public Hashtable getPlayerStats() {
         return new Hashtable() {
@@ -27,11 +30,12 @@ public class Player : MonoBehaviour
             { "agil", agil },
             { "inte", inte },
             { "soc", soc },
-            { "cun", cun},
+            { "cun", cun },
             { "socMod", getSocMod() },
             { "intMod", getIntMod() },
             { "agilMod", getAgilMod() },
-            { "joints", joints},
+            { "fighting", getFightingMod() },
+            { "joints", joints },
         };
     }
 
@@ -43,6 +47,13 @@ public class Player : MonoBehaviour
             logStats += string.Format("{0}: {1} ", key, playerStats[key] + "\n");
         }
         return logStats;
+    }    
+
+    private int getFightingMod(){
+        int fightMod = 0;
+        inventory.FindAll(item => item.modModded.Equals("fighting")).ToList<Item>().ForEach(item => fightMod += item.modVal);
+        Debug.Log("val: " + inventory[0].modVal + " mod: " +inventory[0].modModded);
+        return fightMod;
     }
 
     public int getSocMod() {
