@@ -6,22 +6,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    public bool canCastSpells;
     public int hp = 0;
-    [SerializeField]
     public int vig = 0;
-    [SerializeField]
     public int agil = 0;
-    [SerializeField]
     public int inte = 0;
-    [SerializeField]
     public int soc = 0; 
-    [SerializeField]
     public int cun = 0;
-    [SerializeField]
     public int joints = 5;
     public List<Spell> spells;
     public List<Item> inventory;
-    
 
     public Hashtable getPlayerStats() {
         return new Hashtable() {
@@ -38,16 +32,6 @@ public class Player : MonoBehaviour
             { "joints", joints },
         };
     }
-
-    public string prettyStats() {
-        var playerStats = getPlayerStats();
-        string logStats = "";
-        foreach (string key in playerStats.Keys)
-        {
-            logStats += string.Format("{0}: {1} ", key, playerStats[key] + "\n");
-        }
-        return logStats;
-    }    
 
     private int getFightingMod(){
         int fightMod = 0;
