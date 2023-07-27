@@ -13,7 +13,14 @@ public class ChooseSpellsButton : MonoBehaviour
 
 
     public void onClick() {
-     Debug.Log("hi");   
+        //Debug.Log("hi");
+        spellsText.text = "Spells you can choose:\n";
+        List<Spell> spells = SpellsLibrary.getAllSpells()[1];
+        foreach (Spell spell in spells)
+            {
+                spellsText.text += spell.name + "\n";
+            }
     }
+
    
 }
